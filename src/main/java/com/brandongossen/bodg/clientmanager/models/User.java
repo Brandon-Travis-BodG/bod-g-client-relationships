@@ -27,6 +27,9 @@ public class User {
     private String phoneNumber;
 
     @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -58,6 +61,7 @@ public class User {
         lastName = copy.lastName;
         email = copy.email;
         phoneNumber = copy.phoneNumber;
+        username = copy.username;
         password = copy.password;
         age = copy.age;
         gender = copy.gender;
@@ -65,12 +69,13 @@ public class User {
         weight = copy.weight;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String password, short age, boolean gender, short height, double weight) {
+    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String username, String password, short age, boolean gender, short height, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.username = username;
         this.password = password;
         this.age = age;
         this.gender = gender;
@@ -116,6 +121,14 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getusername() {
+        return username;
+    }
+
+    public void setusername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
