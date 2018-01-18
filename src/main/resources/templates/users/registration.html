@@ -10,33 +10,31 @@
 		<h1>Register Here!!!</h1>
 		<form action="/register" method="POST" th:object="${user}">
 			<label for="firstName">First Name</label>
-			<input id="firstName" th:field="*{firstName}" />
-
+			<input id="firstName" type="text" th:field="*{firstName}" />
 			<label for="lastName">Last Name</label>
-			<input id="lastName" th:field="*{lastName}" />
+			<input id="lastName" type="text" th:field="*{lastName}" />
 			<label for="email">Email</label>
-			<input id="email" th:field="*{email}" />
+			<input id="email" type="text" th:field="*{email}" />
 			<label for="phoneNumber">Phone Number</label>
-			<input id="phoneNumber" th:field="*{phoneNumber}" />
+			<input id="phoneNumber" type="text" th:field="*{phoneNumber}" />
+			<label for="username">Username</label>
+			<input id="username" type="text" th:field="*{username}" />
 			<label for="password">Password</label>
 			<input id="password" type="password" th:field="*{password}" />
 			<label for="age">age</label>
-			<input id="age" type="age" th:field="*{age}" />
+			<input id="age" type="text" th:field="*{age}" />
 			<label for="gender">gender</label>
-			<input id="gender" type="gender" th:field="*{gender}" />
+			<input id="gender" type="text" th:field="*{gender}" />
 			<label for="height">height</label>
-			<input id="height" type="height" th:field="*{height}" />
+			<input id="height" type="text" th:field="*{height}" />
 			<label for="weight">weight</label>
-			<input id="weight" type="weight" th:field="*{weight}" />
+			<input id="weight" type="text" th:field="*{weight}" />
 
 
 			<input value="Sign me up!" type="submit" />
 		</form>
-</body>
-</html>
-
-
-<footer th:replace="/fragments/footer :: main-footer"></footer>
+	</div>
+</div>
 
 </body>
 </html>

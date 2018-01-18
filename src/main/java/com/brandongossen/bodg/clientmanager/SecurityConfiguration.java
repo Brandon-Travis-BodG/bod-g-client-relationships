@@ -42,8 +42,8 @@ public class SecurityConfiguration
                 .logoutSuccessUrl("/login?logout") // append a query string value
                 .and()
                 .authorizeRequests()
-                .antMatchers() // only authenticated users can look at certain pages (This will be determined once proper controllers and views are created).
-                .authenticated()
+//                .antMatchers() // only authenticated users can look at certain pages (This will be determined once proper controllers and views are created).
+//                .authenticated()
         ;
     }
 
