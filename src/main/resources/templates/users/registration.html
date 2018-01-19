@@ -1,40 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/fragments/header :: head('')"></head>
+<head>
+	<meta name="viewport" content="width=width-device, initial-scale=1"/>
+	<meta charset="UTF-8"/>
+	<title>Register</title>
+	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous"
+	/>
+</head>
 <body>
-
-<nav th:replace="/fragments/navbar :: nav-bar"></nav>
 
 <div class="container">
 	<div class="row">
 		<h1>Register Here!!!</h1>
-		<form action="/register" method="POST" th:object="${user}">
-			<label for="firstName">First Name</label>
-			<input id="firstName" type="text" th:field="*{firstName}" />
-			<label for="lastName">Last Name</label>
-			<input id="lastName" type="text" th:field="*{lastName}" />
-			<label for="email">Email</label>
-			<input id="email" type="text" th:field="*{email}" />
-			<label for="phoneNumber">Phone Number</label>
-			<input id="phoneNumber" type="text" th:field="*{phoneNumber}" />
-			<label for="username">Username</label>
-			<input id="username" type="text" th:field="*{username}" />
-			<label for="password">Password</label>
-			<input id="password" type="password" th:field="*{password}" />
-			<label for="age">age</label>
-			<input id="age" type="text" th:field="*{age}" />
-			<label for="gender">gender</label>
-			<input id="gender" type="text" th:field="*{gender}" />
-			<label for="height">height</label>
-			<input id="height" type="text" th:field="*{height}" />
-			<label for="weight">weight</label>
-			<input id="weight" type="text" th:field="*{weight}" />
+		<form th:action="@{/register}" th:method="POST" th:object="${user}">
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input id="firstName" type="text" name="firstName" th:field="*{firstName}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input id="lastName" type="text" name="lastName" th:field="*{lastName}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" type="text" name="email" th:field="*{email}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="phoneNumber">Phone Number</label>
+				<input id="phoneNumber" type="text" name="phoneNumber" th:field="*{phoneNumber}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input id="username" type="text" name="username" th:field="*{username}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input id="password" type="password" name="password" th:field="*{password}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="age">age</label>
+				<input id="age" type="text" name="age" th:field="*{age}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="gender">gender</label>
+				<input id="gender" type="text" name="gender" th:field="*{gender}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="height">height</label>
+				<input id="height" type="text" name="height" th:field="*{height}" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="weight">weight</label>
+				<input id="weight" type="text" name="weight" th:field="*{weight}" class="form-control"/>
+			</div>
 
-
-			<input value="Sign me up!" type="submit" />
+			<input class="btn btn-primary" type="submit" value="Sign Me Up"/>
 		</form>
 	</div>
 </div>
 
+<script
+		src="http://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous">
+</script>
 </body>
 </html>
