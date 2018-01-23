@@ -1,5 +1,5 @@
 body {
-    background-image: url(../img/confectionary.png);
+    background-image: url(../img/crunch-background.jpg);
 }
 
 
@@ -13,4 +13,12 @@ h1 {
     font-family: cursive;
     text-decoration: underline;
     text-align: center;
+}
+
+#footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3%;
+    color: #000;
 }
