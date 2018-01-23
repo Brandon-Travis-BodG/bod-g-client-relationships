@@ -37,7 +37,7 @@ public class UsersController {
         String hashPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
         usersDao.save(user);
-        return "redirect:/login";
+        return "redirect:users/login";
     }
 }
 
