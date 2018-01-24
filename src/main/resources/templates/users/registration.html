@@ -33,6 +33,21 @@
 				<label for="password">Password</label>
 				<input id="password" type="password" name="password" th:field="*{password}" class="form-control"/>
 			</div>
+			<nav class="text-center" aria-label="Page navigation">
+				<ul class="pagination">
+					<!--<li>-->
+						<!--<a href="#" aria-label="Previous">-->
+							<!--<span aria-hidden="true">&laquo;</span>-->
+						<!--</a>-->
+					<!--</li>-->
+					<li><a href="#" class="pagination-page">Next Page</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 			<div class="form-group">
 				<label for="age">age</label>
 				<input id="age" type="text" name="age" th:field="*{age}" class="form-control"/>
