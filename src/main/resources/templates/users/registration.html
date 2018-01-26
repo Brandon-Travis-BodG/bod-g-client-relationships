@@ -9,58 +9,43 @@
 	<div class="row">
 		<h1>Register Here!!!</h1>
 		<form th:action="@{/register}" th:method="POST" th:object="${user}">
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="firstName">First Name</label>
 				<input id="firstName" type="text" name="firstName" th:field="*{firstName}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="lastName">Last Name</label>
 				<input id="lastName" type="text" name="lastName" th:field="*{lastName}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="email">Email</label>
 				<input id="email" type="text" name="email" th:field="*{email}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="phoneNumber">Phone Number</label>
 				<input id="phoneNumber" type="text" name="phoneNumber" th:field="*{phoneNumber}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="username">Username</label>
 				<input id="username" type="text" name="username" th:field="*{username}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="password">Password</label>
 				<input id="password" type="password" name="password" th:field="*{password}" class="form-control"/>
 			</div>
-			<nav class="text-center" aria-label="Page navigation">
-				<ul class="pagination">
-					<!--<li>-->
-						<!--<a href="#" aria-label="Previous">-->
-							<!--<span aria-hidden="true">&laquo;</span>-->
-						<!--</a>-->
-					<!--</li>-->
-					<li><a href="#" class="pagination-page">Next Page</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="age">age</label>
 				<input id="age" type="text" name="age" th:field="*{age}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="gender">gender</label>
 				<input id="gender" type="text" name="gender" th:field="*{gender}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="height">height</label>
 				<input id="height" type="text" name="height" th:field="*{height}" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group page">
 				<label for="weight">weight</label>
 				<input id="weight" type="text" name="weight" th:field="*{weight}" class="form-control"/>
 			</div>
@@ -70,6 +55,12 @@
 	</div>
 </div>
 
+<ul class="pager">
+	<li id="previous"><a href="#">&larr; Previous</a></li>
+	<li id="next"><a href="#">Next &rarr;</a></li>
+</ul>
+
 <footer th:replace="/fragments/footer :: main-footer"></footer>
+<script src="js/registration-pagination.js"></script>
 </body>
 </html>
