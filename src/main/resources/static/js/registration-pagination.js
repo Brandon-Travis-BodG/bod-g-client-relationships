@@ -9,7 +9,7 @@ var numPages = Math.ceil(numItems/perPage);
 console.log(numItems);
 console.log(numPages);
 
-$(".pager").attr("currentPage",0);
+$(".pager").attr("currentPage", 0);
 //.attr is creating and setting an attribute called currentpage with a value of 0.
 
 
@@ -19,7 +19,7 @@ listElement.css("display", "none");
 listElement.slice(0, perPage).css("display", "block");
 
 $("#previous").click(function(){
-    var currPage = $(".pager").attr("currentpage");
+    var currPage = $(".pager").attr("currentPage");
     var goToPage = parseInt(currPage) - 1;
     if(goToPage >= 0){
         goTo(goToPage);
@@ -29,7 +29,7 @@ $("#previous").click(function(){
 });
 
 $("#next").click(function(){
-    var currPage = $(".pager").attr("currentpage");
+    var currPage = $(".pager").attr("currentPage");
     var goToPage = parseInt(currPage) + 1;
     if(goToPage < numPages){
         goTo(goToPage);
@@ -53,7 +53,7 @@ function goTo(page){
 
     listElement.css("display","none");
     listElement.slice(startAt, endOn).css("display","block");
-    $(".pager").attr("currentPage",page);
+    $(".pager").attr("currentPage", page);
 }
 });
 })();
