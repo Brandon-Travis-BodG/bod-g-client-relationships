@@ -36,7 +36,9 @@ public class User {
     private short age;
 
     @Column(nullable = false)
-    private boolean gender;
+    private String gender;
+    //gives things to choose from
+    //char allow a single character
 
     @Column(nullable = false)
     private short height;
@@ -69,7 +71,7 @@ public class User {
         weight = copy.weight;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String username, String password, short age, boolean gender, short height, double weight) {
+    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String username, String password, short age, String gender, short height, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -147,11 +149,11 @@ public class User {
         this.age = age;
     }
 
-    public boolean isGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
