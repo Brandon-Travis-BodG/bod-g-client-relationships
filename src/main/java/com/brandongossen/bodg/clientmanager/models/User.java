@@ -36,7 +36,7 @@ public class User {
     private short age;
 
     @Column(nullable = false)
-    private String gender;
+    private Gender gender;
     //gives things to choose from
     //char allow a single character
 
@@ -71,7 +71,7 @@ public class User {
         weight = copy.weight;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String username, String password, short age, String gender, short height, double weight) {
+    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String username, String password, short age, Gender gender, short height, double weight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -149,11 +149,11 @@ public class User {
         this.age = age;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
