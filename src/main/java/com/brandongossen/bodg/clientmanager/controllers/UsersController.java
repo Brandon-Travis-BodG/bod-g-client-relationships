@@ -1,12 +1,16 @@
 package com.brandongossen.bodg.clientmanager.controllers;
 
+import com.brandongossen.bodg.clientmanager.models.Gender;
+import com.brandongossen.bodg.clientmanager.models.GenderConverter;
 import com.brandongossen.bodg.clientmanager.models.User;
 import com.brandongossen.bodg.clientmanager.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -39,7 +43,14 @@ public class UsersController {
         usersDao.save(user);
         return "redirect:/login";
     }
+
+    @InitBinder
+    public void initBinder(final WebDataBinder binder) {
+        binder.registerCustomEditor(Gender.class, new GenderConverter());
+        //Gender Converter is changing froma string to a gender object
+    }
 }
+
 
 
 
