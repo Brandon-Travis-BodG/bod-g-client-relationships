@@ -18,8 +18,15 @@
 				<label for="password">Password</label>
 				<input id="password" type="password" name="password" class="form-control"/>
 			</div>
-
+			<div class="alert alert-danger" th:if="${param.error}">
+				Username and password combination is incorrect
+			</div>
+			<div id="logout-message" th:if="${param.logout}">
+				You have been logged out. Have a great day!!!
+			</div>
+			<div class="footer">
 			<input class="btn btn-primary" type="submit" value="Log In"/>
+			</div>
 		</form>
 	</div>
 </div>

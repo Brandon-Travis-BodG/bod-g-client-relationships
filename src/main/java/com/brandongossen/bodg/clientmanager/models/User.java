@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -51,7 +52,9 @@ public class User {
 
     @Column(nullable = false)
     @NumberFormat(style= NumberFormat.Style.NUMBER)
+//    @Pattern(regexp="^(0|[1-9][0-9]*)$", message = "Age should be a number")
 //    @NotBlank(message = "Age can not be blank!")
+//    @Digits(integer = 2, fraction = 0, message = "Age must be a number")
     private short age;
 
     @Column(nullable = false)
