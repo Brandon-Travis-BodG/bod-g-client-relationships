@@ -12,42 +12,91 @@
 			<div class="form-group page">
 				<label for="firstName">First Name</label>
 				<input id="firstName" type="text" name="firstName" th:field="*{firstName}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('firstName')}"
+						th:errors="*{firstName}">
+				</div>
 			</div>
 			<div class="form-group page">
 				<label for="lastName">Last Name</label>
 				<input id="lastName" type="text" name="lastName" th:field="*{lastName}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('lastName')}"
+						th:errors="*{lastName}">
+				</div>
 			</div>
 			<div class="form-group page">
 				<label for="email">Email</label>
 				<input id="email" type="text" name="email" th:field="*{email}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('email')}"
+						th:errors="*{email}">
+				</div>
 			</div>
 			<div class="form-group page">
-				<label for="phoneNumber">Phone Number</label>
+				<label for="phoneNumber">Phone Number (Format: ###-###-####)</label>
 				<input id="phoneNumber" type="text" name="phoneNumber" th:field="*{phoneNumber}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('phoneNumber')}"
+						th:errors="*{phoneNumber}">
+				</div>
 			</div>
 			<div class="form-group page">
 				<label for="username">Username</label>
 				<input id="username" type="text" name="username" th:field="*{username}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('username')}"
+						th:errors="*{username}">
+				</div>
 			</div>
 			<div class="form-group page">
 				<label for="password">Password</label>
 				<input id="password" type="password" name="password" th:field="*{password}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}">
+				</div>
 			</div>
 			<div class="form-group page">
 				<label for="age">Age</label>
 				<input id="age" type="text" name="age" th:field="*{age}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('age')}"
+						th:errors="*{age}">
+				</div>
 			</div>
 			<div class="form-group page">
 				<label for="gender">Gender</label>
-				<input id="gender" type="text" name="gender" th:field="*{gender}" class="form-control"/>
+				<select class="form-control" id="gender" name="gender">
+					<option>Male</option>
+					<option>Female</option>
+					<option>Other</option>
+				</select>
 			</div>
 			<div class="form-group page">
-				<label for="height">Height</label>
+				<label for="height">Height (Inches)</label>
 				<input id="height" type="text" name="height" th:field="*{height}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('height')}"
+						th:errors="*{height}">
+				</div>
 			</div>
 			<div class="form-group page">
-				<label for="weight">Weight</label>
+				<label for="weight">Weight (Lbs.)</label>
 				<input id="weight" type="text" name="weight" th:field="*{weight}" class="form-control"/>
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('weight')}"
+						th:errors="*{weight}">
+				</div>
 			</div>
 
 			<input class="btn btn-primary page" type="submit" value="Sign Me Up"/>
