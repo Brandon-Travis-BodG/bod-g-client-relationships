@@ -41,7 +41,7 @@
             exercises.results.forEach(function (exercise) {
                 // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                 // put each element inside obj
-                html += `<li> ${exercise.name}</li>`;
+                html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
                 html += `<li> ${exercise.description}</li>`;
                 html += `<li id="exercise-${exercise.id}"></li>`;
                 // var string;

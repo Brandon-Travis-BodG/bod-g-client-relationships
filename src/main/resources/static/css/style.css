@@ -34,3 +34,7 @@ h1 {
     font-size: 2em;
     font-weight: bolder;
 }
+
+#exerciseName {
+    color: #000;
+}
