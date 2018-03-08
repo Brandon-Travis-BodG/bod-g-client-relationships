@@ -31,14 +31,15 @@
             //         name,
             //         descrip,
             //         id
+            //         pic: [urls, urls,url]
             //     },
-            //     picture: {
-            //         1: url,
-            //         2: url,
-            //         3: url
-            //     }
+            //for loop { obj[i].pic // push url into obj[i].pic
+
             // }];
             exercises.results.forEach(function (exercise) {
+                if (exercise.category !== 10) {
+                    return;
+                }
                 // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                 // put each element inside obj
                 html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
