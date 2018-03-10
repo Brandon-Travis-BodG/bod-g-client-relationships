@@ -37,13 +37,13 @@
 
             // }];
             exercises.results.forEach(function (exercise) {
-                if (exercise.category == 10) {
-                return exercise.name && exercise.description
-                }
-                else (exercise.category !== 10)
-                {
-                    return;
-                }
+                // if (exercise.category == 10) {
+                // return exercise.name && exercise.description
+                // }
+                // else (exercise.category !== 10)
+                // {
+                //     return;
+                // }
                 // }
                 // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                 // put each element inside obj
