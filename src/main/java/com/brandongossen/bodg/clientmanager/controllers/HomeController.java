@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @GetMapping("/")
     public String homePage() {
-            return "home";
+        return "home";
     }
 
-@GetMapping("/exercises")
+    @GetMapping("/body-parts")
+    public String bodyPart() {
+        return "body-parts";
+    }
+
+    @GetMapping("/exercises")
     public String exercise() {
         return "exercises";
     }
