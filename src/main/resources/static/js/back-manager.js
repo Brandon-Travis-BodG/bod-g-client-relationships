@@ -38,7 +38,7 @@
             // }];
 
             exercises.results.forEach(function (exercise) {
-                if (exercise.category == 10) {
+                if (exercise.category == 12) {
                     // return exercise.name && exercise.description
                     // }
                     // else (exercise.category !== 10)
@@ -74,12 +74,12 @@
                 }
             });
             html += "</ul>";
-            // $("#abs").click(function (event) {
+            // $("#back").click(function (event) {
             //     event.preventDefault();
-            //     $("#exercises").show(exercises.category == 10);
-            // exercise.category == 10;
+            //     $("#exercises").show(exercises.category == 12);
+            // exercise.category == 12;
             // });
-            document.getElementById('ab-exercises').innerHTML = html;
+            document.getElementById('back-exercises').innerHTML = html;
             // $('#exercises').html(html);
         });
     myPromise.catch(() => console.log("Rejected!"));

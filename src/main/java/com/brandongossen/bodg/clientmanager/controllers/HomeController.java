@@ -30,4 +30,11 @@ public class HomeController {
     public String abExercise() {
         return "ab-exercises";
     }
+
+    @GetMapping("/back-exercises")
+    public String backExercise() {
+        return "back-exercises";
+    }
+
+
 }
