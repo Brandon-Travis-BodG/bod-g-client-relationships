@@ -20,4 +20,14 @@ public class HomeController {
     public String exercise() {
         return "exercises";
     }
+
+    @GetMapping("/arm-exercises")
+    public String armExercise() {
+        return "arm-exercises";
+    }
+
+    @GetMapping("/ab-exercises")
+    public String abExercise() {
+        return "ab-exercises";
+    }
 }
