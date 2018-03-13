@@ -23,10 +23,6 @@ h1 {
     color: #000;
 }
 
-.home-topic {
-    color: #000;
-}
-
 #logout-message {
     background-color: white;
     color: #000;
@@ -36,5 +32,13 @@ h1 {
 }
 
 #exerciseName {
+    color: #000;
+}
+
+.home-topic {
+    color: #000;
+}
+
+.muscular-system {
     color: #000;
 }
