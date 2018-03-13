@@ -41,5 +41,10 @@ public class HomeController {
         return "leg-exercises";
     }
 
+    @GetMapping("/chest-exercises")
+    public String chestExercise() {
+        return "chest-exercises";
+    }
+
 
 }
