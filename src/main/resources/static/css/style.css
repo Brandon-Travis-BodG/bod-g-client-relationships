@@ -1,7 +1,8 @@
 body {
     background-image: url(../img/crunch-background.jpg);
-    background-size: cover;
+    /*background-size: cover;*/
     background-repeat: no-repeat;
+    height: 100%;
 }
 
 h1 {
