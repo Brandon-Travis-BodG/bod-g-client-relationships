@@ -62,7 +62,7 @@
                     // }
                     // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                     // put each element inside obj
-                    html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
+                    html += `<li id="exerciseName"> ${exercise.name}</li>`;
                     html += `<li> ${exercise.description}</li>`;
                     html += `<li id="exercise-${exercise.id}"></li>`;
                     // var string;
@@ -98,7 +98,6 @@
         });
     myPromise.catch(() => console.log("Rejected!"));
 
-
     function search(){
         let input, filter, ul, li, a, i;
         input = document.getElementById("search");
@@ -107,24 +106,13 @@
         li = ul.getElementsByTagName("li");
 
         for(i = 0; i < li.length; i++){
-    a = li[i].getElementsByTagName('a')[0];
-    if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
-        li[i].style.display = "";
-    } else {
-        li[i].style.display = "none";
+            // li[i].getElementsByTagName('')[0];
+            if(li[i].innerHTML.toUpperCase().indexOf(filter) > -1){
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
             }
         }
     }
-    // $("#search-bar").on("keyup", function () {
-    //     let g = $(this).val();
-    //     $("#exercises").each(function () {
-    //         let s = $(this).text();
-    //         if (s.indexOf(g) != -1) {
-    //             $(this).parent().parent().show();
-    //         }
-    //         else {
-    //             $(this).parent().parent().hide();
-    //         }
-    //     });
-    // });​
-})();
+
+$("#search").on("keyup", search);
