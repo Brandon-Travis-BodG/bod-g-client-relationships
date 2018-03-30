@@ -38,7 +38,7 @@
         .then((exercises) => {
 
 
-            let html = "<ul id='workouts'>";
+            let html = "<div id='workouts'>";
             let urls = [];
             // let obj = [{
             //     ex1: {
@@ -53,38 +53,40 @@
 
             exercises.results.forEach(function (exercise) {
                 if (exercise.category === Number(category)) {
-                    // return exercise.name && exercise.description
-                    // }
-                    // else (exercise.category !== 10)
-                    // {
-                    //     return;
-                    // }
-                    // }
-                    // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
-                    // put each element inside obj
-                    html += `<li id="exerciseName"> ${exercise.name}</li>`;
-                    html += `<li> ${exercise.description}</li>`;
-                    html += `<li id="exercise-${exercise.id}"></li>`;
-                    // var string;
-                    // for loop
-                    // ex[i].name, ex[i].description, ex[i].id
-                    // after loop --> string = <li>ex1.name</li>....
-                    fetch("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id)
-                    // put each element inside object in the correct exercise
-                    // obj.ex1.picture =
-                        .then(response => response.json())
-                        .then(images => {
-                            console.log(images);
-                            if (images.results.length === 0) return;
-                            // let imageHtml = `<li><img id="image" src="${image.results[0].image}"</img></li>`;
-                            // $(`#exercise-${exercise.id}`).html(imageHtml);
-                            let imageHtml = "<li>";
-                            images.results.forEach(function (image) {
-                                imageHtml += `<img id="image" src="${image.image}"</img></li>`;
+                    if (exercise.name !== "") {
+                        // return exercise.name && exercise.description
+                        // }
+                        // else (exercise.category !== 10)
+                        // {
+                        //     return;
+                        // }
+                        // }
+                        // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
+                        // put each element inside obj
+                        html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
+                        html += `<p> ${exercise.description}</p>`;
+                        html += `<p id="exercise-${exercise.id}"></p>`;
+                        // var string;
+                        // for loop
+                        // ex[i].name, ex[i].description, ex[i].id
+                        // after loop --> string = <li>ex1.name</li>....
+                        fetch("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id)
+                        // put each element inside object in the correct exercise
+                        // obj.ex1.picture =
+                            .then(response => response.json())
+                            .then(images => {
+                                console.log(images);
+                                if (images.results.length === 0) return;
+                                // let imageHtml = `<li><img id="image" src="${image.results[0].image}"</img></li>`;
+                                // $(`#exercise-${exercise.id}`).html(imageHtml);
+                                let imageHtml = "<li>";
+                                images.results.forEach(function (image) {
+                                    imageHtml += `<img id="image" src="${image.image}"</img></li>`;
+                                });
+                                imageHtml += "<li>";
+                                $(`#exercise-${exercise.id}`).html(imageHtml);
                             });
-                            imageHtml += "<li>";
-                            $(`#exercise-${exercise.id}`).html(imageHtml);
-                        });
+                    }
                 }
             });
             html += "</ul>";
@@ -99,20 +101,21 @@
     myPromise.catch(() => console.log("Rejected!"));
 
     function search(){
-        let input, filter, ul, li, a, i;
+        let input, filter, ul, h3;
         input = document.getElementById("search");
         filter = input.value.toUpperCase();
         ul = document.getElementById("workouts");
-        li = ul.getElementsByTagName("li");
+        h3 = ul.getElementsByTagName("h3");
 
-        for(i = 0; i < li.length; i++){
+        for(let i = 0; i < h3.length; i++){
             // li[i].getElementsByTagName('')[0];
-            if(li[i].innerHTML.toUpperCase().indexOf(filter) > -1){
-                li[i].style.display = "";
+            if(h3[i].innerHTML.toUpperCase().indexOf(filter) > -1){
+                h3[i].style.display = "";
             } else {
-                li[i].style.display = "none";
+                h3[i].style.display = "none";
             }
         }
     }
 
 $("#search").on("keyup", search);
+})();
