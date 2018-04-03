@@ -63,9 +63,12 @@
                         // }
                         // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                         // put each element inside obj
+                        html += `<div class="exercise" data-title="${exercise.name.toUpperCase()}">`;
+                        //adding an attribute that surrounds the below block to be able to show or hide the whole block
                         html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
                         html += `<p> ${exercise.description}</p>`;
                         html += `<p id="exercise-${exercise.id}"></p>`;
+                        html += `</div>`;
                         // var string;
                         // for loop
                         // ex[i].name, ex[i].description, ex[i].id
@@ -104,17 +107,26 @@
         let input, filter, ul, h3;
         input = document.getElementById("search");
         filter = input.value.toUpperCase();
-        ul = document.getElementById("workouts");
-        h3 = ul.getElementsByTagName("h3");
+        /*ul = document.getElementById("workouts");
+        h3 = ul.getElementsByTagName("h3");*/
 
-        for(let i = 0; i < h3.length; i++){
+        $('.exercise').hide();
+        $(`div[data-title*="${filter}"]`).show();
+        //the *= does the same thing as contains or index of.
+
+        //When the input matches the name of an exercise then the whole block will display and the exercise names thay do not match will not display.
+
+        console.log($(`div[data-title*="${filter}"]`));;
+
+
+        /*for(let i = 0; i < h3.length; i++){
             // li[i].getElementsByTagName('')[0];
             if(h3[i].innerHTML.toUpperCase().indexOf(filter) > -1){
                 h3[i].style.display = "";
             } else {
                 h3[i].style.display = "none";
             }
-        }
+        }*/
     }
 
 $("#search").on("keyup", search);
