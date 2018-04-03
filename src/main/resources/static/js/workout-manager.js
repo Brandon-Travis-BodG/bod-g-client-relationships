@@ -63,7 +63,7 @@
                         // }
                         // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                         // put each element inside obj
-                        html += `<div class="exercise" data-title="${exercise.name.toUpperCase()}">`;
+                        html += `<div class="exercise" data-title="${exercise.name.toUpperCase()}" data-description="${exercise.description.toUpperCase()}">`;
                         //adding an attribute that surrounds the below block to be able to show or hide the whole block
                         html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
                         html += `<p> ${exercise.description}</p>`;
@@ -112,6 +112,7 @@
 
         $('.exercise').hide();
         $(`div[data-title*="${filter}"]`).show();
+        $(`div[data-description*="${filter}"]`).show();
         //the *= does the same thing as contains or index of.
 
         //When the input matches the name of an exercise then the whole block will display and the exercise names thay do not match will not display.
