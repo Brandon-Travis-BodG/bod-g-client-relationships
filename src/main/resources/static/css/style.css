@@ -1,8 +1,8 @@
 body {
     background-image: url(../img/crunch-background.jpg);
-    /*background-size: cover;*/
+    background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 h1 {
@@ -49,3 +49,9 @@ h1 {
 .body-part {
     text-align: center;
 }
+
+.container {
+        width: 1170px;
+        max-height: 100vh;
+        overflow: scroll;
+    }
