@@ -65,7 +65,7 @@
                         // put each element inside obj
                         html += `<div class="exercise" data-title="${exercise.name.toUpperCase()}" data-description="${exercise.description.toUpperCase()}">`;
                         //adding an attribute that surrounds the below block to be able to show or hide the whole block
-                        html += `<h3 id="exerciseName"> ${exercise.name}</h3>`;
+                        html += `<h3 class="exerciseName"> ${exercise.name}</h3>`;
                         html += `<p> ${exercise.description}</p>`;
                         html += `<p id="exercise-${exercise.id}"></p>`;
                         html += `</div>`;
@@ -80,11 +80,9 @@
                             .then(images => {
                                 console.log(images);
                                 if (images.results.length === 0) return;
-                                // let imageHtml = `<li><img id="image" src="${image.results[0].image}"</img></li>`;
-                                // $(`#exercise-${exercise.id}`).html(imageHtml);
                                 let imageHtml = "<li>";
                                 images.results.forEach(function (image) {
-                                    imageHtml += `<img id="image" src="${image.image}"</img></li>`;
+                                    imageHtml += `<img class="image" src="${image.image}"/></li>`;
                                 });
                                 imageHtml += "<li>";
                                 $(`#exercise-${exercise.id}`).html(imageHtml);
@@ -93,22 +91,17 @@
                 }
             });
             html += "</ul>";
-            // $("#arms").click(function (event) {
-            //     event.preventDefault();
-            //     $("#exercises").show(exercises.category == 8);
-            //     // exercise.category == 8;
-            // });
             document.getElementById('exercises').innerHTML = html;
             // $('#exercises').html(html);
         });
     myPromise.catch(() => console.log("Rejected!"));
 
-    function search(){
-        let input, filter, ul, h3;
+    function search(e){
+        e.preventDefault();
+
+        let input, filter;
         input = document.getElementById("search");
         filter = input.value.toUpperCase();
-        /*ul = document.getElementById("workouts");
-        h3 = ul.getElementsByTagName("h3");*/
 
         $('.exercise').hide();
         $(`div[data-title*="${filter}"]`).show();
@@ -117,18 +110,9 @@
 
         //When the input matches the name of an exercise then the whole block will display and the exercise names thay do not match will not display.
 
-        console.log($(`div[data-title*="${filter}"]`));;
+        // console.log($(`div[data-title*="${filter}"]`));
 
-
-        /*for(let i = 0; i < h3.length; i++){
-            // li[i].getElementsByTagName('')[0];
-            if(h3[i].innerHTML.toUpperCase().indexOf(filter) > -1){
-                h3[i].style.display = "";
-            } else {
-                h3[i].style.display = "none";
-            }
-        }*/
     }
 
-$("#search").on("keyup", search);
+    $("#search-bar").on("submit", search);
 })();
