@@ -15,7 +15,7 @@ public class Blog {
 
     @Column(nullable = false, length = 100)
     @NotBlank(message = "The Blog must have a title!")
-    @Size(min = 3, message = "The title must be at least 3 character long!")
+    @Size(min = 3, message = "The Blog must be at least 3 character long!")
     private String title;
 
     @Column(nullable = false)
@@ -35,9 +35,9 @@ public class Blog {
     public Blog() {
     }
 
-
+    
     public Blog(long id, String response, User user) {
-
+        
     }
 
     public Blog(long id, String title, String body, User user) {
@@ -54,7 +54,7 @@ public class Blog {
     public void setId(long id) {
         this.id = id;
     }
-
+    
     public String getTitle() {
         return title;
     }
@@ -70,11 +70,11 @@ public class Blog {
     public void setBody(String body) {
         this.body = body;
     }
-
+    
     public String getResponse() {
         return response;
     }
-
+    
     public void setResponse(String response) {
         this.response = response;
     }
