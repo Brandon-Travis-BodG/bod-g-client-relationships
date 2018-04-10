@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/header :: head('Home Page')"></head>
+
+<body>
+<nav th:replace="/fragments/navbar :: nav-bar"></nav>
+
+<div class="container">
+	<h1>Choose A Body Part</h1>
+	<div class="row">
+
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<h2 class="muscular-system" id="frontal">Frontal</h2>
+				<div class="row">
+					<div class="col-xs-12">
+						<img src="/img/muscular-frontal.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<h2 class="muscular-system" id="posterior">Posterior</h2>
+				<div class="row">
+					<div class="col-xs-12">
+						<img src="/img/muscular-posterior.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4 col-lg-offset-2">
+			<h2 class="body-part" id="abs">
+				<a href="exercises.html?category=10">Abdominals</a></h2>
+		</div>
+		<div class="col-xs-12 col-lg-4">
+			<h2 class="body-part" id="arms">
+				<a href="exercises.html?category=8">Arms</a></h2>
+		</div>
+		<div class="col-xs-12 col-lg-4 col-lg-offset-2">
+			<h2 class="body-part" id="back">
+				<a href="exercises.html?category=12">Back</a></h2>
+		</div>
+		<div class="col-xs-12 col-lg-4">
+			<h2 class="body-part" id="chest">
+				<a href="exercises.html?category=11">Chest</a></h2>
+		</div>
+		<div class="col-xs-12 col-lg-4 col-lg-offset-2">
+			<h2 class="body-part" id="legs">
+				<a href="leg-exercises.html">Legs</a></h2>
+		</div>
+		<div class="col-xs-12 col-lg-4">
+			<h2 class="body-part" id="shoulders">
+				<a href="exercises.html?category=13">Shoulders</a></h2>
+		</div>
+	</div>
+</div>
+
+
+<footer th:replace="/fragments/footer :: main-footer"></footer>
+<script src="/js/workout-manager.js"></script>
+</body>
+</html>
+
+
+		<!--<div class="col-xs-6">-->
+			<!--<h2 class="muscular-system" id="frontal">Frontal</h2>-->
+			<!--<img src="/img/muscular-frontal.png" />-->
+		<!--</div>-->
+		<!--<div class="col-xs-6">-->
+			<!--<h2 class="muscular-system" id="posterior">Posterior</h2>-->
+			<!--<img src="/img/muscular-posterior.png" />-->
+		<!--</div>-->

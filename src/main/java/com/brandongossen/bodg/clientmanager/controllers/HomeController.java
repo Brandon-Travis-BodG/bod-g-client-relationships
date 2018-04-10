@@ -8,11 +8,49 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @GetMapping("/")
     public String homePage() {
-            return "home";
+        return "home";
     }
 
-@GetMapping("/exercises")
+    @GetMapping("/body-parts")
+    public String bodyPart() {
+        return "body-parts";
+    }
+
+    @GetMapping("/exercises")
     public String exercise() {
         return "exercises";
     }
+
+    @GetMapping("/arm-exercises")
+    public String armExercise() {
+        return "arm-exercises";
+    }
+
+    @GetMapping("/ab-exercises")
+    public String abExercise() {
+        return "ab-exercises";
+    }
+
+    @GetMapping("/back-exercises")
+    public String backExercise() {
+        return "back-exercises";
+    }
+
+    @GetMapping("/chest-exercises")
+    public String chestExercise() {
+        return "chest-exercises";
+    }
+
+    @GetMapping("/leg-exercises")
+    public String legExercise() {
+        return "leg-exercises";
+    }
+
+    @GetMapping("/shoulder-exercises")
+    public String shoulderExercise() {
+        return "shoulder-exercises";
+    }
+
+
+
 }
