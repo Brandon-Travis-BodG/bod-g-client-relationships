@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/header :: head('Create Blog')"></head>
+<body>
+
+<nav th:replace="/fragments/navbar :: nav-bar"></nav>
+
+<div class="container">
+	<div class="row">
+		<h1>Create Blog</h1>
+
+		<form class="form" th:include="/fragments/create-edit :: form-partial"
+			  th:method="post"
+			  th:action="@{/blog/create}"
+			  th:object="${blog}"/>
+	</div>
+</div>
+
+
+<footer th:replace="/fragments/footer :: main-footer"></footer>
+
+</body>
+</html>
