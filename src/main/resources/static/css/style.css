@@ -62,3 +62,8 @@ h1 {
     font-size: 2em;
     font-weight: bolder;
 }
+
+#create-blog {
+    display: flex;
+    flex-direction: column;
+}
