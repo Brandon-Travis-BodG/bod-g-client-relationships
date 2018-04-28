@@ -33,7 +33,7 @@ public class Blog {
 
     public Blog() {
     }
-    
+
 
     public Blog(long id, String title, String body, boolean responsesAllowed, User user) {
         this.id = id;
@@ -67,10 +67,10 @@ public class Blog {
         this.body = body;
     }
     
-    public boolean getResponseAllowed() {
+    public boolean getResponsesAllowed() {
         return responsesAllowed;
     }
-    
+
     public void setResponsesAllowed(boolean responsesAllowed) {
         this.responsesAllowed = responsesAllowed;
     }
