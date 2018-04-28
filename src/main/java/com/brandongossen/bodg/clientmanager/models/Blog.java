@@ -23,9 +23,8 @@ public class Blog {
     @Size(min = 10, message = "The description must be at least 10 character long!")
     private String body;
 
-    @Column(nullable = false)
-    @NotBlank(message = "A Response cannot be blank!")
-    private String response;
+    @Column
+    private boolean responsesAllowed;
 
     @ManyToOne
     @JsonManagedReference
@@ -34,16 +33,13 @@ public class Blog {
 
     public Blog() {
     }
-
     
-    public Blog(long id, String response, User user) {
-        
-    }
 
-    public Blog(long id, String title, String body, User user) {
+    public Blog(long id, String title, String body, boolean responsesAllowed, User user) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.responsesAllowed = responsesAllowed;
         this.user = user;
     }
 
@@ -71,12 +67,12 @@ public class Blog {
         this.body = body;
     }
     
-    public String getResponse() {
-        return response;
+    public boolean getResponseAllowed() {
+        return responsesAllowed;
     }
     
-    public void setResponse(String response) {
-        this.response = response;
+    public void setResponsesAllowed(boolean responsesAllowed) {
+        this.responsesAllowed = responsesAllowed;
     }
 
     public User getUser() {
