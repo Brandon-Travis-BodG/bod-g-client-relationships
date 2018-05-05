@@ -77,6 +77,14 @@ public class User {
     @JsonBackReference
     private List<HealthInfo> healthInfos;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
+    private List<Blog> blogs;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
+    private List<Response> responses;
+
     @ManyToMany(cascade = ALL, mappedBy = "users")
     private List<Goal> goals;
 
@@ -110,6 +118,24 @@ public class User {
         this.height = height;
         this.weight = weight;
     }
+
+    public User(String firstName, String lastName, String email, String phoneNumber, String username, String password, short age, Gender gender, short height, double weight, List<HealthInfo> healthInfos, List<Blog> blogs, List<Response> responses, List<Goal> goals) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.age = age;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
+        this.healthInfos = healthInfos;
+        this.blogs = blogs;
+        this.responses = responses;
+        this.goals = goals;
+    }
+
 
     public long getId() {
         return id;
@@ -205,6 +231,22 @@ public class User {
 
     public void setHealthInfos(List<HealthInfo> healthInfos) {
         this.healthInfos = healthInfos;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    public List<Response> getResponses() {
+        return responses;
+    }
+
+    public void setResponses(List<Response> responses) {
+        this.responses = responses;
     }
 
     public List<Goal> getGoals() {

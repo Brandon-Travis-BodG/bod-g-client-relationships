@@ -1,10 +1,12 @@
 package com.brandongossen.bodg.clientmanager.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "blog")
@@ -31,6 +33,12 @@ public class Blog {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "blog")
+    @JsonBackReference
+    private List<Response> responses;
+
+
     public Blog() {
     }
 
@@ -41,6 +49,14 @@ public class Blog {
         this.body = body;
         this.responsesAllowed = responsesAllowed;
         this.user = user;
+    }
+
+    public Blog(String title, String body, boolean responsesAllowed, User user, List<Response> responses) {
+        this.title = title;
+        this.body = body;
+        this.responsesAllowed = responsesAllowed;
+        this.user = user;
+        this.responses = responses;
     }
 
     public long getId() {
@@ -66,14 +82,7 @@ public class Blog {
     public void setBody(String body) {
         this.body = body;
     }
-    
-    public boolean getResponsesAllowed() {
-        return responsesAllowed;
-    }
 
-    public void setResponsesAllowed(boolean responsesAllowed) {
-        this.responsesAllowed = responsesAllowed;
-    }
 
     public User getUser() {
         return user;
@@ -81,6 +90,22 @@ public class Blog {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isResponsesAllowed() {
+        return responsesAllowed;
+    }
+
+    public void setResponsesAllowed(boolean responsesAllowed) {
+        this.responsesAllowed = responsesAllowed;
+    }
+
+    public List<Response> getResponses() {
+        return responses;
+    }
+
+    public void setResponses(List<Response> responses) {
+        this.responses = responses;
     }
 }
 
