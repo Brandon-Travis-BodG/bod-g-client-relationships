@@ -40,6 +40,15 @@ public class BlogController {
         return "blog/home";
     }
 
+    @GetMapping("/blog/{id}")
+    public String viewIndividualPost(@PathVariable long id, Model viewModel) {
+
+        Blog blog = blogSvc.findOneTopic(id);
+
+        viewModel.addAttribute("blog", blog);
+        return "blog/show";
+    }
+
     @GetMapping("/blog/create")
     public String createBlogForm(Model viewModel) {
         viewModel.addAttribute("blog", new Blog());
@@ -59,39 +68,60 @@ public class BlogController {
         return "redirect:/blog";
     }
 
-    @GetMapping("/response/{id}/create")
-    public String createResponseForm(@PathVariable long id, Model viewModel, User user) {
-
-        Blog blog = blogSvc.findOneTopic(id);
-
-
-        if (blog != null) {
-            Response response = new Response();
-            response.setBlog(blog);
-            response.setUser(user);
-
-            viewModel.addAttribute("user", user);
-
-            return "/blog/create/comment";
-
-        } else {
-            return "/error";
-        }
-
-
+    @GetMapping("/response/create")
+    public String createResponseForm(Model viewModel) {
+        viewModel.addAttribute("response", new Response());
+        return "blog/create-comment";
     }
 
 
-    @PostMapping("/response/{id}/create")
-    public String createNewResponse(@PathVariable long id, @Valid @ModelAttribute("response") Response response, Errors validation,  Model viewModel) {
+    @PostMapping("/response/create")
+    public String createNewResponse(@Valid @ModelAttribute("response") Response response, Errors validation, Model viewModel, Blog blog, User user) {
+        response.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if (validation.hasErrors()) {
             viewModel.addAttribute("errors", validation);
             viewModel.addAttribute("response", response);
-            return "/response/create";
+            return "/blog/create-comment";
         }
+        response.setUser(user);
+        response.setBlog(blog);
         responseDao.save(response);
-        return "redirect:/blog/" + response.getBlog().getId();
-
-
+        return "redirect:/blog";
     }
+
+//    @GetMapping("/response/create")
+//    public String createResponseForm(@PathVariable long id, Model viewModel, User user) {
+//
+//        Blog blog = blogSvc.findOneTopic(id);
+//
+//
+//        if (blog != null) {
+//            Response response = new Response();
+//            response.setBlog(blog);
+//            response.setUser(user);
+//
+//            viewModel.addAttribute("user", user);
+//
+//            return "/blog/create/comment";
+//
+//        } else {
+//            return "/error";
+//        }
+//
+//
+//    }
+//
+//
+//    @PostMapping("/response/create")
+//    public String createNewResponse(@PathVariable long id, @Valid @ModelAttribute("response") Response response, Errors validation,  Model viewModel) {
+//        if (validation.hasErrors()) {
+//            viewModel.addAttribute("errors", validation);
+//            viewModel.addAttribute("response", response);
+//            return "/response/create";
+//        }
+//        responseDao.save(response);
+//        return "redirect:/blog/" + response.getBlog().getId();
+//
+//
+//    }
 }

@@ -13,21 +13,34 @@
 			<h1>Share Your Thoughts</h1>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<a sec:authorize="isAuthenticated()" th:href="@{/blog/create}" id="create-blog" class="btn btn-primary">Start
+				A
+				Blog</a>
+		</div>
+	</div>
 
 	<div class="blog" th:each="blog : ${blog}">
-		<h1><a th:href="${'/blog/' + blog.id}" th:text="${blog.title}"></a></h1>
-		<h2 th:text="${blog.body}"></h2>
+		<h2 class="blog-title"><a th:href="${'/blog/' + blog.id}" th:text="${blog.title}"></a></h2>
+		<h3 class="blog-body" th:text="${blog.body}"></h3>
+		<div><a id="user" th:text="${blog.user.username}" th:href="@{'/blog/' + ${blog.user.username}}">User</a></div>
+		<h4 th:text="${blog.responses}">Comments</h4>
+		<!--<div><a th:text="${blog.responses.user.username}" th:href="@{'/blog/' + ${blog.responses.user.username}}">User</a>-->
+		<!--</div>-->
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
+				<a th:href="@{/response/create}">
+					<button type="button" class="btn btn-primary btn-block">Leave a Comment</button>
+				</a>
+			</div>
+		</div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="col-xs-4 col-xs-offset-4">
-		<a sec:authorize="isAuthenticated()" th:href="@{/blog/create}" id="create-blog" class="btn btn-primary">Start A
-			Blog</a>
+
+	<div>
+		<footer th:replace="/fragments/footer :: main-footer"></footer>
 	</div>
-</div>
-<div>
-	<footer th:replace="/fragments/footer :: main-footer"></footer>
 </div>
 </body>
 </html>
