@@ -16,8 +16,15 @@
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.id == blog.user.id}">
 					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
+						<div class="col-xs-3 col-xs-offset-3">
 							<a th:href="@{/blogs/{id}/edit(id=${blog.id})}" class="btn btn-info">Edit</a>
+						</div>
+						<div class="col-xs-3" th:if="${#authentication.principal.id == blog.user.id}">
+							<div>
+								<form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
+									<input class="btn btn-danger" type="submit" value="Delete"/>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

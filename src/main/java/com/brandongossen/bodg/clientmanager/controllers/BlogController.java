@@ -68,23 +68,17 @@ public class BlogController {
         return "redirect:/blog";
     }
 
-    @GetMapping("/response/create")
-    public String createResponseForm(Model viewModel) {
-        viewModel.addAttribute("response", new Response());
-        return "blog/create-comment";
-    }
-
     @GetMapping("/blogs/{id}/edit")
-    public String viewEditPostForm(@PathVariable long id, Model viewModel) {
+    public String viewEditBlogForm(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("blog", blogSvc.findOneTopic(id));
         return "/blog/edit";
     }
 
     @PostMapping("/blogs/{id}/edit")
-    public String editPost(@PathVariable long id, @Valid @ModelAttribute("blog") Blog editBlog, Errors validation, Model viewModel) {
+    public String editBlog(@PathVariable long id, @Valid @ModelAttribute("blog") Blog editBlog, Errors validation, Model viewModel) {
         User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if (blogSvc.findOneTopic(id).getUser().getId() != (user.getId())) {
-            return "redirect:/posts";
+            return "redirect:/blogs";
         }
 
 
@@ -99,6 +93,25 @@ public class BlogController {
         blogSvc.saveTopic(editBlog);
         return "redirect:/blog";
     }
+
+    @PostMapping("blogs/{id}/delete")
+    public String deleteBlog(@PathVariable long id) {
+        User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if (blogSvc.findOneTopic(id).getUser().getId() != (user.getId())) {
+            return "redirect:/blog";
+        }
+
+        Blog blog = blogSvc.findOneTopic(id);
+        blogSvc.deleteTopic(blog);
+        return "redirect:/blog";
+    }
+
+    @GetMapping("/response/create")
+    public String createResponseForm(Model viewModel) {
+        viewModel.addAttribute("response", new Response());
+        return "blog/create-comment";
+    }
+
 
     @PostMapping("/response/create")
     public String createNewResponse(@Valid @ModelAttribute("response") Response response, Errors validation, Model viewModel, Blog blog, User user) {
