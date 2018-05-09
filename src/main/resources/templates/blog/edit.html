@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<head th:replace="/fragments/header :: head('Create Blog')"></head>
+<head th:replace="/fragments/header :: head('Edit Blog')"></head>
 <body>
 
 <nav th:replace="/fragments/navbar :: nav-bar"></nav>
@@ -10,7 +10,7 @@
 <!--th: if-->
 
 <div class="container">
-	<form th:action="@{/blog/create}" th:method="POST" th:object="${blog}">
+	<form th:action="@{'/blogs/' + ${blog.id} + '/edit'}" th:method="POST" th:object="${blog}">
 		<div class="form-group">
 			<label for="title">Blog Title:</label>
 			<input th:field="*{title}" class="form-control" name="title" id="title"/>

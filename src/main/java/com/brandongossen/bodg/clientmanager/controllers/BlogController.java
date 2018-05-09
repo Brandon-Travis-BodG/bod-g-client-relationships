@@ -57,14 +57,14 @@ public class BlogController {
 
 
     @PostMapping("/blog/create")
-    public String createBlog(@Valid @ModelAttribute("blog") Blog blog, Errors validation, Model viewModel) {
-        blog.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    public String createBlog(@Valid @ModelAttribute("blog") Blog createBlog, Errors validation, Model viewModel) {
+        createBlog.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if (validation.hasErrors()) {
             viewModel.addAttribute("errors", validation);
-            viewModel.addAttribute("blog", blog);
+            viewModel.addAttribute("blog", createBlog);
             return "/blog/create";
         }
-        blogSvc.saveTopic(blog);
+        blogSvc.saveTopic(createBlog);
         return "redirect:/blog";
     }
 
@@ -72,6 +72,12 @@ public class BlogController {
     public String createResponseForm(Model viewModel) {
         viewModel.addAttribute("response", new Response());
         return "blog/create-comment";
+    }
+
+    @GetMapping("/blogs/{id}/edit")
+    public String viewEditPostForm(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("blog", blogSvc.findOneTopic(id));
+        return "/blog/edit";
     }
 
 
