@@ -80,6 +80,25 @@ public class BlogController {
         return "/blog/edit";
     }
 
+    @PostMapping("/blogs/{id}/edit")
+    public String editPost(@PathVariable long id, @Valid @ModelAttribute("blog") Blog editBlog, Errors validation, Model viewModel) {
+        User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if (blogSvc.findOneTopic(id).getUser().getId() != (user.getId())) {
+            return "redirect:/posts";
+        }
+
+
+        if (validation.hasErrors()) {
+            viewModel.addAttribute("errors", validation);
+            viewModel.addAttribute("blog", editBlog);
+            return "blog/edit";
+        }
+
+
+        editBlog.setUser(user);
+        blogSvc.saveTopic(editBlog);
+        return "redirect:/blog";
+    }
 
     @PostMapping("/response/create")
     public String createNewResponse(@Valid @ModelAttribute("response") Response response, Errors validation, Model viewModel, Blog blog, User user) {

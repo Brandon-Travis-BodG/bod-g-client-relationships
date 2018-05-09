@@ -12,34 +12,26 @@
 			<h3 class="blog-body" th:text="${blog.body}"></h3>
 			<h5 th:text="${blog.user.username}"></h5>
 		</div>
-		<!--<div class="btns" id="btn-holder">-->
-		<!--<div sec:authorize="isAuthenticated()">-->
-		<!--<div th:if="${#authentication.principal.id == post.user.id}">-->
-		<!--<div class="row">-->
-		<!--<div class="col-xs-5">-->
-		<!--<a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-info">Edit</a>-->
-		<!--</div>-->
-
-		<!--<div class="col-xs-7" th:if="${#authentication.principal.id == post.user.id}">-->
-		<!--<div>-->
-		<!--<form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">-->
-		<!--<input class="btn btn-danger" type="submit" value="Delete"/>-->
-		<!--</form>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-		<!--</div>-->
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-xs-offset-4">
-			<a sec:authorize="isAuthenticated()" th:href="@{/response/create}" class="btn btn-primary">Leave Comment</a>
+		<div class="buttons" id="edit-button">
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${#authentication.principal.id == blog.user.id}">
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+							<a th:href="@{/blogs/{id}/edit(id=${blog.id})}" class="btn btn-info">Edit</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div>
-		<footer th:replace="/fragments/footer :: main-footer"></footer>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
+				<a sec:authorize="isAuthenticated()" th:href="@{/response/create}" class="btn btn-primary">Leave
+					Comment</a>
+			</div>
+		</div>
+		<div>
+			<footer th:replace="/fragments/footer :: main-footer"></footer>
+		</div>
 	</div>
 </div>
 </body>
