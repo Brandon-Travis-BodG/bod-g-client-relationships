@@ -14,12 +14,11 @@ public class Response {
 
     @Column(nullable = false)
     @NotBlank(message = "A response can not be empty!")
-    private String response;
+    private String comment;
 
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "user_id")
-
     private User user;
 
 
@@ -32,8 +31,8 @@ public class Response {
 
     public Response(){}
 
-    public Response(String response, User user, Blog blog) {
-        this.response = response;
+    public Response(String comment, User user, Blog blog) {
+        this.comment = comment;
         this.user = user;
         this.blog = blog;
     }
@@ -46,12 +45,12 @@ public class Response {
         this.id = id;
     }
 
-    public String getResponse() {
-        return response;
+    public String getComment() {
+        return comment;
     }
 
-    public void setResponse(String response) {
-        this.response = response;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public User getUser() {
