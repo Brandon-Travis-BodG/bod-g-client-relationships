@@ -56,6 +56,13 @@ h2, h3, #user-creator, #user-responder, #blog-comment {
     text-align: center;
 }
 
+.leave-comment {
+    text-align: center;
+}
+
+.btn-info {
+    width: 95%;
+}
 
 #footer {
     display: flex;
@@ -76,8 +83,4 @@ h2, h3, #user-creator, #user-responder, #blog-comment {
 #create-blog {
     display: flex;
     flex-direction: column;
-}
-
-.btn-info {
-    width: 95%;
 }
