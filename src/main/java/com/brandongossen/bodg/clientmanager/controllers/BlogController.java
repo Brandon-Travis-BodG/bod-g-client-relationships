@@ -106,23 +106,27 @@ public class BlogController {
         return "redirect:/blog";
     }
 
-    @GetMapping("/response/create")
-    public String createResponseForm(Model viewModel) {
+    @GetMapping("/response/{blog_id}/create")
+    public String createResponseForm(@PathVariable long blog_id, Model viewModel) {
+        Blog blog1 = blogSvc.findOneTopic(blog_id);
         viewModel.addAttribute("response", new Response());
+        viewModel.addAttribute("blog", blog1);
         return "blog/create-comment";
     }
 
 
-    @PostMapping("/response/create")
-    public String createNewResponse(@Valid @ModelAttribute("response") Response response, Errors validation, Model viewModel, Blog blog, User user) {
-        response.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    @PostMapping("/response/{blog_id}/create")
+    public String createNewResponse(@PathVariable long blog_id, @Valid @ModelAttribute("response") Response response, Errors validation, Model viewModel) {
+        User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        response.setUser(user);
         if (validation.hasErrors()) {
             viewModel.addAttribute("errors", validation);
             viewModel.addAttribute("response", response);
             return "/blog/create-comment";
         }
-        response.setUser(user);
-        response.setBlog(blog);
+//        response.setUser(user);
+        Blog blog1 = blogSvc.findOneTopic(blog_id);
+        response.setBlog(blog1);
         responseDao.save(response);
         return "redirect:/blog";
     }
