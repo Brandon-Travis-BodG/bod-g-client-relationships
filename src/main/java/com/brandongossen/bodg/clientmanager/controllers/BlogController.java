@@ -108,9 +108,9 @@ public class BlogController {
 
     @GetMapping("/response/{blog_id}/create")
     public String createResponseForm(@PathVariable long blog_id, Model viewModel) {
-        Blog blog1 = blogSvc.findOneTopic(blog_id);
+        Blog blog = blogSvc.findOneTopic(blog_id);
         viewModel.addAttribute("response", new Response());
-        viewModel.addAttribute("blog", blog1);
+        viewModel.addAttribute("blog", blog);
         return "blog/create-comment";
     }
 
@@ -124,46 +124,39 @@ public class BlogController {
             viewModel.addAttribute("response", response);
             return "/blog/create-comment";
         }
-//        response.setUser(user);
-        Blog blog1 = blogSvc.findOneTopic(blog_id);
-        response.setBlog(blog1);
+        Blog blog = blogSvc.findOneTopic(blog_id);
+        response.setBlog(blog);
         responseDao.save(response);
         return "redirect:/blog";
     }
 
-//    @GetMapping("/response/create")
-//    public String createResponseForm(@PathVariable long id, Model viewModel, User user) {
-//
-//        Blog blog = blogSvc.findOneTopic(id);
-//
-//
-//        if (blog != null) {
-//            Response response = new Response();
-//            response.setBlog(blog);
-//            response.setUser(user);
-//
-//            viewModel.addAttribute("user", user);
-//
-//            return "/blog/create/comment";
-//
-//        } else {
-//            return "/error";
-//        }
-//
-//
-//    }
-//
-//
-//    @PostMapping("/response/create")
-//    public String createNewResponse(@PathVariable long id, @Valid @ModelAttribute("response") Response response, Errors validation,  Model viewModel) {
-//        if (validation.hasErrors()) {
-//            viewModel.addAttribute("errors", validation);
-//            viewModel.addAttribute("response", response);
-//            return "/response/create";
-//        }
-//        responseDao.save(response);
-//        return "redirect:/blog/" + response.getBlog().getId();
-//
-//
-//    }
+    @GetMapping("/response/{blog_id}/edit/{id}")
+    public String viewEditResponseForm(@PathVariable long blog_id, @PathVariable long id, Model viewModel) {
+        Blog blog = blogSvc.findOneTopic(blog_id);
+        Response response = responseDao.findOne(id);
+        viewModel.addAttribute("blog", blog);
+        viewModel.addAttribute("response", response);
+        return "/blog/edit-comment";
+    }
+
+    @PostMapping("/response/{blog_id}/edit/{id}")
+    public String editResponse(@PathVariable long blog_id, @PathVariable long id, @Valid @ModelAttribute("response") Response editResponse, Errors validation, Model viewModel) {
+        User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        editResponse.setUser(user);
+        if (responseDao.findOne(id).getUser().getId() != (user.getId())) {
+            return "redirect:/blogs";
+        }
+        if (validation.hasErrors()) {
+            viewModel.addAttribute("errors", validation);
+            viewModel.addAttribute("response", editResponse);
+            return "/response/edit-comment";
+        }
+
+        Blog blog = blogSvc.findOneTopic(blog_id);
+        editResponse.setBlog(blog);
+        responseDao.save(editResponse);
+        return "redirect:/blog";
+    }
+
+
 }
