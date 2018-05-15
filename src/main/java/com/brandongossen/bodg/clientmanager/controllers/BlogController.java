@@ -144,7 +144,7 @@ public class BlogController {
         User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         editResponse.setUser(user);
         if (responseDao.findOne(id).getUser().getId() != (user.getId())) {
-            return "redirect:/blogs";
+            return "redirect:/blog";
         }
         if (validation.hasErrors()) {
             viewModel.addAttribute("errors", validation);
@@ -158,5 +158,16 @@ public class BlogController {
         return "redirect:/blog";
     }
 
+    @PostMapping("response/delete/{id}")
+    public String deleteResponse(@PathVariable long id) {
+        User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if (responseDao.findOne(id).getUser().getId() != (user.getId())) {
+            return "redirect:/blog";
+        }
+
+       Response response = responseDao.findOne(id);
+        responseDao.delete(response);
+        return "redirect:/blog";
+    }
 
 }

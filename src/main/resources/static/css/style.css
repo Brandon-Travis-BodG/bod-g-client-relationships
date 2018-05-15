@@ -60,8 +60,9 @@ h2, h3, #user-creator, #user-responder, #blog-comment {
     text-align: center;
 }
 
-.btn-info {
-    width: 95%;
+.edit-blog-comment {
+    width: 75%;
+    margin-left: 20%;
 }
 
 #footer {
