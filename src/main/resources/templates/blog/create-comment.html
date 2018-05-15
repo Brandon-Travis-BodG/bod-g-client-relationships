@@ -8,7 +8,7 @@
 <nav th:replace="/fragments/navbar :: nav-bar"></nav>
 
 <div class="container">
-	<form th:action="@{'/response/' + ${response.blog_id} + '/create'}" th:method="POST" th:object="${response}">
+	<form th:action="@{'/response/' + ${blog_id} + '/create'}" th:method="POST" th:object="${response}">
 		<div class="form-group">
 			<label for="comment">Comment:</label>
 			<input th:field="*{comment}" class="form-control" name="comment" id="comment"/>

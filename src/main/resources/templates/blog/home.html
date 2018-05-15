@@ -46,9 +46,6 @@
 			</div>
 		</div>
 		<h4 id="comments">Comments</h4>
-		<!--<div><a th:text="${blog.responses.user.username}" th:href="@{'/blog/' + ${blog.responses.user.username}}">User</a>-->
-		<!--</div>-->
-
 		<div class="response" th:each="response : ${blog.responses}">
 			<h5 id="blog-comment" th:href="${'/blog/' + response.id}" th:text="${response.comment}"></h5>
 			<h6 id="user-responder" th:href="@{'/blog/' + ${response.user.username}}"
@@ -56,17 +53,11 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-4 leave-comment">
-				<a sec:authorize="isAuthenticated()" th:href="@{/response/create}" class="btn btn-primary">Leave a
+				<a sec:authorize="isAuthenticated()" th:href="@{/response/{blog_id}/create(blog_id=${blog.id})}"
+				   class="btn btn-primary">Leave a
 					Comment</a>
 			</div>
 		</div>
-		<!--<div class="row">-->
-		<!--<div class="col-xs-4 col-xs-offset-4">-->
-		<!--<a th:href="@{/response/create}">-->
-		<!--<button type="button" class="btn btn-primary btn-block">Leave a Comment</button>-->
-		<!--</a>-->
-		<!--</div>-->
-		<!--</div>-->
 	</div>
 
 
