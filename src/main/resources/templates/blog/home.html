@@ -45,18 +45,48 @@
 				</div>
 			</div>
 		</div>
+
 		<h4 id="comments">Comments</h4>
+
 		<div class="response" th:each="response : ${blog.responses}">
+			<div class="row">
+				<div class="col-xs-2 col-xs-offset-2">
+						<div sec:authorize="isAuthenticated()">
+							<div th:if="${#authentication.principal.id == response.user.id}">
+								<a th:href="@{/response/{blog_id}/edit/{id}(blog_id=${blog.id},id=${response.id})}"
+								   class="btn btn-info">Edit Comment</a>
+							</div>
+						</div>
+					</div>
+				<div class="col-xs-4">
 			<h5 id="blog-comment" th:href="${'/blog/' + response.id}" th:text="${response.comment}"></h5>
+				</div>
+			<div class="col-xs-4">
+				<button>Delete</button>
+			</div>
+		</div>
 			<h6 id="user-responder" th:href="@{'/blog/' + ${response.user.username}}"
 				th:text="${response.user.username}">Username</h6>
+
+			<!--<div class="yo">-->
+				<!--<div sec:authorize="isAuthenticated()">-->
+					<!--<div th:if="${#authentication.principal.id == response.user.id}">-->
+						<!--<a th:href="@{/response/{blog_id}/edit/{id}(blog_id=${blog.id},id=${response.id})}"-->
+						   <!--class="btn btn-info">Edit Comment</a>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+
 		</div>
+
+
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-4 leave-comment">
 				<a sec:authorize="isAuthenticated()" th:href="@{/response/{blog_id}/create(blog_id=${blog.id})}"
 				   class="btn btn-primary">Leave a
 					Comment</a>
 			</div>
+
 		</div>
 	</div>
 
