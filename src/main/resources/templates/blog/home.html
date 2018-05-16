@@ -22,29 +22,52 @@
 	</div>
 
 	<div class="blog" th:each="blog : ${blog}">
-		<h2 id="blog-title"><a th:href="${'/blog/' + blog.id}" th:text="${blog.title}"></a></h2>
-		<h3 id="blog-body" th:text="${blog.body}"></h3>
-		<div><a id="user-creator" th:text="${blog.user.username}"
-				th:href="@{'/blog/' + ${blog.user.username}}">Username</a>
-		</div>
-		<div class="buttons">
-			<div sec:authorize="isAuthenticated()">
-				<div th:if="${#authentication.principal.id == blog.user.id}">
-					<div class="row">
-						<div class="col-xs-1 col-xs-offset-5">
-							<a th:href="@{/blogs/{id}/edit(id=${blog.id})}" class="btn btn-info">Edit</a>
-						</div>
-						<div class="col-xs-1 col-xs-offset-0" th:if="${#authentication.principal.id == blog.user.id}">
-							<div>
-								<form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
-									<input class="btn btn-danger" type="submit" value="Delete"/>
-								</form>
-							</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-2">
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.id == blog.user.id}">
+						<a th:href="@{/blogs/{id}/edit(id=${blog.id})}" class="btn btn-info edit-blog-comment" id="edit-blog-button">Edit Blog</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<h2 id="blog-title"><a th:href="${'/blog/' + blog.id}" th:text="${blog.title}"></a></h2>
+				<h3 id="blog-body" th:text="${blog.body}"></h3>
+				<div><a id="user-creator" th:text="${blog.user.username}"
+						th:href="@{'/blog/' + ${blog.user.username}}">Username</a>
+				</div>
+			</div>
+			<div class="col-xs-2">
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.id == blog.user.id}">
+						<div>
+							<form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
+								<input class="btn btn-danger" id="delete-blog-button" type="submit" value="Delete Blog"/>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!--<div class="buttons">-->
+		<!--<div sec:authorize="isAuthenticated()">-->
+		<!--<div th:if="${#authentication.principal.id == blog.user.id}">-->
+		<!--<div class="row">-->
+		<!--<div class="col-xs-1 col-xs-offset-5">-->
+		<!--<a th:href="@{/blogs/{id}/edit(id=${blog.id})}" class="btn btn-info">Edit</a>-->
+		<!--</div>-->
+		<!--<div class="col-xs-1 col-xs-offset-0" th:if="${#authentication.principal.id == blog.user.id}">-->
+		<!--<div>-->
+		<!--<form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">-->
+		<!--<input class="btn btn-danger" type="submit" value="Delete"/>-->
+		<!--</form>-->
+		<!--</div>-->
+		<!--</div>-->
+		<!--</div>-->
+		<!--</div>-->
+		<!--</div>-->
+		<!--</div>-->
 
 		<h4 id="comments">Comments</h4>
 

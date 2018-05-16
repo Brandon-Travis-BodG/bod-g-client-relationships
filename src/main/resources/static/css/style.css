@@ -65,6 +65,16 @@ h2, h3, #user-creator, #user-responder, #blog-comment {
     margin-left: 20%;
 }
 
+
+#edit-blog-button {
+    margin-top: 17%;
+}
+
+#delete-blog-button {
+    margin-top: 17%;
+    width: 75%;
+}
+
 #footer {
     display: flex;
     align-items: center;
