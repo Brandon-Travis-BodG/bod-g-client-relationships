@@ -66,11 +66,11 @@ h2, h3, #user-creator, #user-responder, #blog-comment {
 }
 
 
-#edit-blog-button {
+.edit-blog-button {
     margin-top: 17%;
 }
 
-#delete-blog-button {
+.delete-blog-button {
     margin-top: 17%;
     width: 75%;
 }
