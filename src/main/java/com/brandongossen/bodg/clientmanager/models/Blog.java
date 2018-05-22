@@ -26,7 +26,7 @@ public class Blog {
     private String body;
 
     @Column
-    private boolean responsesAllowed;
+    private boolean responsesAllowed = true;
 
     @ManyToOne
     @JsonManagedReference
