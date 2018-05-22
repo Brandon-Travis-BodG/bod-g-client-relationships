@@ -5,6 +5,8 @@ import com.brandongossen.bodg.clientmanager.repositories.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("blogSvc")
 public class BlogSvc {
     private final BlogRepository blogDao;
@@ -30,5 +32,7 @@ public class BlogSvc {
         blogDao.delete(blog);
         return null;
     }
-
+    public List<Blog> searchForBlog(String searchWord) {
+        return blogDao.searchBar(searchWord);
+    }
 }

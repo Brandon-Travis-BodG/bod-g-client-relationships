@@ -12,12 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class BlogController {
@@ -109,7 +107,7 @@ public class BlogController {
     @GetMapping("/response/{blog_id}/create")
     public String createResponseForm(@PathVariable long blog_id, Model viewModel) {
         Blog blog = blogSvc.findOneTopic(blog_id);
-        if(!responsesAllowed(blog)){
+        if (!responsesAllowed(blog)) {
 
 
 //            validation.rejectValue(
@@ -181,7 +179,7 @@ public class BlogController {
             return "redirect:/blog";
         }
 
-       Response response = responseDao.findOne(id);
+        Response response = responseDao.findOne(id);
         responseDao.delete(response);
         return "redirect:/blog";
     }
@@ -190,4 +188,10 @@ public class BlogController {
         return blog.isResponsesAllowed();
     }
 
+    @GetMapping("/search")
+    public String searchBlog(@RequestParam("searchWord") String searchWord, Model viewModel) {
+        List<Blog> search = blogSvc.searchForBlog(searchWord);
+        viewModel.addAttribute("blog", search);
+        return "blog/home";
+    }
 }
