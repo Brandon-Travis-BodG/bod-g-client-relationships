@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="/fragments/header :: head('Edit Comment')"></head>
+<body>
+
+<nav th:replace="/fragments/navbar :: nav-bar"></nav>
+
+<div class="container">
+	<!--<div sec:authorize="isAuthenticated()">-->
+		<!--<form th:if="${#authentication.principal.id == response.user.id}"-->
+		<form th:action="@{'/response/' + ${blog_id} + '/edit/' + ${id}}" th:method="POST" th:object="${response}">
+			<div class="form-group">
+				<label for="comment">Comment:</label>
+				<input th:field="*{comment}" class="form-control" name="comment" id="comment"/>
+
+				<div
+						class="alert alert-danger"
+						th:if="${#fields.hasErrors('comment')}"
+						th:errors="*{comment}">
+				</div>
+			</div>
+			<input class="btn btn-primary" type="submit" value="submit"/>
+		</form>
+
+
+	<div>
+		<footer th:replace="/fragments/footer :: main-footer"></footer>
+	</div>
+</div>
+</body>
+</html>

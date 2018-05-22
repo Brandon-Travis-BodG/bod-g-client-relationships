@@ -1,12 +1,13 @@
 body {
     background-image: url(../img/crunch-background.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
+    /*overflow: scroll;*/
     /*height: 100%;*/
 }
 
 
-h1 {
+h1, h2, h3, #user-creator, #user-responder, #blog-comment, #comments {
     color: #000;
     font-weight: bolder;
     align-content: center;
@@ -17,6 +18,15 @@ h1 {
     text-decoration: underline;
     text-align: center;
 }
+
+h2, h3, #user-creator, #user-responder, #blog-comment, #comments  {
+    font-family: sans-serif;
+}
+
+h2, h3, #user-creator, #user-responder, #blog-comment {
+    text-decoration: none;
+}
+
 
 .container {
     width: 1170px;
@@ -46,6 +56,24 @@ h1 {
     text-align: center;
 }
 
+.leave-comment {
+    text-align: center;
+}
+
+.edit-blog-comment {
+    width: 75%;
+    margin-left: 20%;
+}
+
+
+.edit-blog-button {
+    margin-top: 17%;
+}
+
+.delete-blog-button {
+    margin-top: 17%;
+    width: 75%;
+}
 
 #footer {
     display: flex;
@@ -61,4 +89,9 @@ h1 {
     text-align: center;
     font-size: 2em;
     font-weight: bolder;
+}
+
+#create-blog {
+    display: flex;
+    flex-direction: column;
 }

@@ -63,12 +63,12 @@
                         // }
                         // urls.push("https://wger.de/api/v2/exerciseimage/?exercise=" + exercise.id);
                         // put each element inside obj
-                        html += `<div class="exercise" data-title="${exercise.name.toUpperCase()}" data-description="${exercise.description.toUpperCase()}">`;
+                        html += `<div class="row"><div class="exercise" data-title="${exercise.name.toUpperCase()}" data-description="${exercise.description.toUpperCase()}">`;
                         //adding an attribute that surrounds the below block to be able to show or hide the whole block
                         html += `<h3 class="exerciseName"> ${exercise.name}</h3>`;
                         html += `<p> ${exercise.description}</p>`;
                         html += `<p id="exercise-${exercise.id}"></p>`;
-                        html += `</div>`;
+                        html += `</div></div>`;
                         // var string;
                         // for loop
                         // ex[i].name, ex[i].description, ex[i].id

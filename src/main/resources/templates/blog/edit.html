@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="/fragments/header :: head('Edit Blog')"></head>
+<body>
+
+<nav th:replace="/fragments/navbar :: nav-bar"></nav>
+
+<!--th: if-->
+
+<div class="container">
+	<form th:action="@{'/blogs/' + ${blog.id} + '/edit'}" th:method="POST" th:object="${blog}">
+		<div class="form-group">
+			<label for="title">Blog Title:</label>
+			<input th:field="*{title}" class="form-control" name="title" id="title"/>
+
+			<div
+					class="alert alert-danger"
+					th:if="${#fields.hasErrors('title')}"
+					th:errors="*{title}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="body">Blog Body:</label>
+			<textarea th:field="*{body}" class="form-control" name="body"
+					  id="body"></textarea>
+
+			<div
+					class="alert alert-danger"
+					th:if="${#fields.hasErrors('body')}"
+					th:errors="*{body}">
+			</div>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" value="responsesAllowed" name="responsesAllowed" id="responsesAllowed" th:field="*{responsesAllowed}" />
+				Allow Responses?
+			</label>
+		</div>
+
+		<input class="btn btn-primary" type="submit" value="submit"/>
+	</form>
+</div>
+
+<div>
+	<footer th:replace="/fragments/footer :: main-footer"></footer>
+</div>
+</body>
+</html>

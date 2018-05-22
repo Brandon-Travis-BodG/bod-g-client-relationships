@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="/fragments/header :: head('Individual Blog')"></head>
+<body>
+<nav th:replace="/fragments/navbar :: nav-bar"></nav>
+<div class="container">
+	<h1>Blog</h1>
+	<div class="blog">
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-2">
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.id == blog.user.id}">
+						<a th:href="@{/blogs/{id}/edit(id=${blog.id})}"
+						   class="btn btn-info edit-blog-comment edit-blog-button">Edit Blog</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<h2 id="blog-title" th:text="${blog.title}"></h2>
+				<h3 id="blog-body" th:text="${blog.body}"></h3>
+				<h5><a id="user-creator" th:text="${blog.user.username}"
+					   th:href="@{'/blog/' + ${blog.user.username}}">Username</a>
+				</h5>
+			</div>
+			<div class="col-xs-2">
+				<div sec:authorize="isAuthenticated()">
+					<div th:if="${#authentication.principal.id == blog.user.id}">
+						<div>
+							<form th:action="@{/blogs/{id}/delete(id=${blog.id})}" method="post">
+								<input class="btn btn-danger delete-blog-button" type="submit" value="Delete Blog"/>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h4 id="comments">Comments</h4>
+
+		<div class="response" th:each="response : ${blog.responses}">
+			<div class="row">
+				<div class="col-xs-2 col-xs-offset-2">
+					<div sec:authorize="isAuthenticated()">
+						<div th:if="${#authentication.principal.id == response.user.id}">
+							<a th:href="@{/response/{blog_id}/edit/{id}(blog_id=${blog.id},id=${response.id})}"
+							   class="btn btn-info edit-blog-comment">Edit Comment</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<h5 id="blog-comment" th:href="${'/blog/' + response.id}" th:text="${response.comment}"></h5>
+				</div>
+				<div class="col-xs-2">
+					<div sec:authorize="isAuthenticated()">
+						<div th:if="${#authentication.principal.id == response.user.id}">
+							<div>
+								<form th:action="@{/response/delete/{id}(id=${response.id})}" method="post">
+									<input class="btn btn-danger" type="submit" value="Delete Comment"/>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<h6 id="user-responder" th:href="@{'/blog/' + ${response.user.username}}"
+				th:text="${response.user.username}">Username</h6>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 leave-comment">
+				<a sec:authorize="isAuthenticated()" th:href="@{/response/{blog_id}/create(blog_id=${blog.id})}"
+				   class="btn btn-primary">Leave a
+					Comment</a>
+			</div>
+		</div>
+	</div>
+	<div>
+		<footer th:replace="/fragments/footer :: main-footer"></footer>
+	</div>
+</div>
+</body>
+</html>
