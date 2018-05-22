@@ -109,6 +109,22 @@ public class BlogController {
     @GetMapping("/response/{blog_id}/create")
     public String createResponseForm(@PathVariable long blog_id, Model viewModel) {
         Blog blog = blogSvc.findOneTopic(blog_id);
+        if(!responsesAllowed(blog)){
+
+
+//            validation.rejectValue(
+//                    "comment",
+//                    "response.comment",
+//                    "Comments are not allowed for this blog!"
+//            );
+//        }
+//
+//        if (validation.hasErrors()) {
+//            viewModel.addAttribute("errors", validation);
+//            viewModel.addAttribute("blog", blog);
+            return "redirect:/blog";
+        }
+
         viewModel.addAttribute("response", new Response());
         viewModel.addAttribute("blog", blog);
         return "blog/create-comment";
@@ -168,6 +184,10 @@ public class BlogController {
        Response response = responseDao.findOne(id);
         responseDao.delete(response);
         return "redirect:/blog";
+    }
+
+    private boolean responsesAllowed(Blog blog) {
+        return blog.isResponsesAllowed();
     }
 
 }
