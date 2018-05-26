@@ -14,7 +14,10 @@
 				<h2 class="muscular-system" id="frontal">Frontal</h2>
 				<div class="row">
 					<div class="col-xs-12">
-						<img src="/img/muscular-frontal.png"/>
+						<img src="/img/muscular-frontal.png" usemap="#Map"/>
+						<map name="Map" id="Map">
+							<area shape="poly"  coords="150,300,148,393,272,399,277,294" href="exercises.html?category=10" />
+						</map>
 					</div>
 				</div>
 			</div>
@@ -57,6 +60,7 @@
 
 <footer th:replace="/fragments/footer :: main-footer"></footer>
 <script src="/js/workout-manager.js"></script>
+<script src="/js/body-highlights.js"></script>
 </body>
 </html>
 
