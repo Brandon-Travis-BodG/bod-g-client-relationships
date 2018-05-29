@@ -95,3 +95,8 @@ h2, h3, #user-creator, #user-responder, #blog-comment {
     display: flex;
     flex-direction: column;
 }
+
+
+/*#Map area{*/
+    /*filter: grayscale(100%);*/
+/*}*/
